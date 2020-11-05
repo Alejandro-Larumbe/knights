@@ -31,7 +31,7 @@ class Node:
           self._parent = None
           return
 
-        if node == self.parent: 
+        if node == self.parent:
           return
         if self.parent:
             self.parent.remove_child(self)
@@ -40,18 +40,20 @@ class Node:
 
 
     def depth_search(self, value, visited=set()):
-        if self == None or self in visited:
-          return None
-        if self.value == value:
-            return self
-        else:
-          visited.add(self)
-          for child in self.children:
-            found = child.depth_search(value, visited)
-            if found:
-              return found
+      # print(self.value)
+      if self == None or self in visited:
+        return None
+      if self.value == value:
+          return self
+      else:
+        visited.add(self)
+        for child in self.children:
+          found = child.depth_search(value, visited)
+          if found:
+            print(found.value)
+            return found
 
-    
+
     def breadth_search(self, value, queue=[]):
         if self == None:
           return None
